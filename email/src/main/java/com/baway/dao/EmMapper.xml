@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baway.dao.EmMapper">
+   <select id="selectAll" resultType="email">
+      select * from email
+   </select>
+   
+   <select id="selectAllup" resultType="email">
+      select * from email order by date asc
+   </select>
+   
+   <select id="selectAlldown" resultType="email">
+      select * from email order by date desc
+   </select>
+   
+   <select id="selectwd" resultType="email">
+      select * from email where status = 1
+   </select>
+   
+   <select id="selectyd" resultType="email">
+      select * from email where status = 0
+   </select>
+   
+   <delete id="delSome" parameterType="string">
+      delete from email where id in (${value})
+   </delete>
+   
+   <update id="updStatus" parameterType="int">
+       update email set status = 0 where id = #{id}
+   </update>
+</mapper>
